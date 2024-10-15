@@ -1,0 +1,8 @@
+1. Ask the 1-st player to type his rock-paper-scissors move.
+2. The 1-st player inputs his move.
+3. Assign his move to a variable.
+4. Ask the 2-nd player to type his rock-paper-scissors move.
+5. The 2-nd player inputs his move.
+6. Assign his move to a variable.
+7. Compare the both players moves
+8. Announce the winner
