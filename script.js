@@ -17,11 +17,12 @@ function getComputerChoice(params) {
     return computerMove;
 }
 
-function getHumanChoice(params) {
+//function getHumanChoice(params) {
    let humanMove = prompt("What is your Rock Paper Scissors choice:");
    return humanMove;
 }
 
+function 
 
 
 function playGame(params) {
