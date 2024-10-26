@@ -12,13 +12,33 @@
             <h1>Rock-Paper-Scissors Game</h1>
         </div>
         <div class="content">
-            <h1>Select Your Move</h1>
+            <h2>Select Your Move</h2>
             <div class="selections">
-                <button class="selections-btn"><img src="./images/rock.png" alt="rock icon"></button>
+                <button class="selections-btn" id="rock"><img src="./images/rock.png" alt="rock icon"></button>
                 <button class="selections-btn"><img src="./images/paper.png" alt="paper icon"></button>
                 <button class="selections-btn"><img src="./images/scissors.png" alt="scissors icon"></button>
             </div>
         </div>
-        <div class="result"></div>
+        <div class="result">
+            <div id="player">
+                <div class="points">
+                    0
+                </div>
+                <div class="current-move">
+                    <h2>Player</h2>
+                    <div class="current-move-icon"></div>
+                </div>
+            </div>
+            <div id="computer">
+                <div class="points">
+                    <span>0</span>
+                </div>
+                <div class="current-move">
+                    <h2>Computer</h2>
+                    <div class="current-move-icon"></div>
+                </div>
+                
+            </div>
+        </div>
 </body>
 </html>

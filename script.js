@@ -22,7 +22,9 @@ function getComputerChoice(params) {
    return humanMove;
 }
 
-function 
+function getHumanChoice () {
+    
+}
 
 
 function playGame(params) {
