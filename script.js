@@ -29,7 +29,6 @@ function getHumanChoice (e) {
 }
 
 let selectionBtn = document.querySelectorAll(".selections-btn")
-console.log(selectionBtn);
 
 for (let i = 0; i < selectionBtn.length; i++) {
     selectionBtn[i].addEventListener("click", playRound);
@@ -37,8 +36,20 @@ for (let i = 0; i < selectionBtn.length; i++) {
 }
 
     function playRound(e) {
+        let playerScoreDiv = document.getElementById("player-points");
+        let computerScoreDiv = document.getElementById("computer-points");
+
+        let playerScore = parseInt(playerScoreDiv.textContent.trim());
+        let computerScore = parseInt(computerScoreDiv.textContent.trim());
+
+
+        if (playerScore === 5 || computerScore === 5) {
+            return
+        }
+
         let computerChoice = getComputerChoice();
         let playerChoice = getHumanChoice(e);
+        
 
         let playerChoiceImg = document.createElement("img");
         playerChoiceImg.src = `./images/${playerChoice}.png`;
@@ -58,6 +69,33 @@ for (let i = 0; i < selectionBtn.length; i++) {
 
         playerChoiceImgDiv.appendChild(playerChoiceImg);
         computerChoiceImgDiv.appendChild(computerChoiceImg);
+
+
+        switch (playerChoice) {
+            case "rock":
+                if (computerChoice === "scissors") {
+                    playerScoreDiv.textContent = `${++playerScore} `;
+                } else {
+                    computerScoreDiv.textContent = `${++computerScore}`;
+                }
+                break;
+            case "paper":
+                if (computerChoice === "rock") {
+                    playerScoreDiv.textContent = `${++playerScore} `;
+                } else {
+                    computerScoreDiv.textContent = `${++computerScore}`;
+                }
+                break;
+            case "scissors":
+                if (computerChoice === "paper") {
+                    playerScoreDiv.textContent = `${++playerScore} `;
+                } else {
+                    computerScoreDiv.textContent = `${++computerScore}`;
+                }
+                break;
+            default:
+                break;
+        }
 
         console.log(playerChoiceImg)
 
