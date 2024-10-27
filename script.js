@@ -1,15 +1,15 @@
-function getComputerChoice(params) {
+function getComputerChoice() {
     let computerMove = "";
     const randomNumber = Math.floor(Math.random()*3) + 1 ;
     switch (randomNumber) {
         case 1:
-            computerMove = "Rock";
+            computerMove = "rock";
             break;
         case 2:
-            computerMove = "Paper";
+            computerMove = "paper";
             break;
         case 3:
-            computerMove = "Scissors";
+            computerMove = "scissors";
             break;
         default:
             break;
@@ -17,77 +17,50 @@ function getComputerChoice(params) {
     return computerMove;
 }
 
-//function getHumanChoice(params) {
-   let humanMove = prompt("What is your Rock Paper Scissors choice:");
-   return humanMove;
+function getHumanChoice (e) {
+    let humanMove = "";
+
+    if (e.target.tagName.toLowerCase() === 'img') {
+        humanMove = e.target.parentElement.id;
+    } else if (e.target.tagName.toLowerCase() === 'button') {
+        humanMove = e.target.id;
+    }
+    return humanMove;
 }
 
-function getHumanChoice () {
+let selectionBtn = document.querySelectorAll(".selections-btn")
+console.log(selectionBtn);
+
+for (let i = 0; i < selectionBtn.length; i++) {
+    selectionBtn[i].addEventListener("click", playRound);
     
 }
 
+    function playRound(e) {
+        let computerChoice = getComputerChoice();
+        let playerChoice = getHumanChoice(e);
 
-function playGame(params) {
+        let playerChoiceImg = document.createElement("img");
+        playerChoiceImg.src = `./images/${playerChoice}.png`;
+
+        let computerChoiceImg = document.createElement("img");
+        computerChoiceImg.src = `./images/${computerChoice}.png`;
+
+        let playerChoiceImgDiv = document.getElementById("player-move");
+        let computerChoiceImgDiv = document.getElementById("computer-move");
 
 
-    let humanScore = 0;
-    let computerScore = 0;
-    let computerChoice = "";
-    let humanChoice = "";
-    for (let rounds = 1; rounds <= 5; rounds++){
-        computerChoice = getComputerChoice().toLowerCase();
-        humanChoice = getHumanChoice().toLocaleLowerCase();
-        console.log(computerChoice);
-        console.log(humanChoice);
-        playRound(humanChoice, computerChoice);   
-    }
-    if(humanScore > computerScore) {
-        console.log(`You win! Your Score: ${humanScore} - Computer Score: ${computerScore}`);
-    } else if (humanScore < computerScore) {
-        console.log(`You lose! Your Score: ${humanScore} - Computer Score: ${computerScore}`);
-    } else {
-        console.log(`Draw! Your Score: ${humanScore} - Computer Score: ${computerScore}`);
-    }
-
-    function playRound(humanSelection, computerSelection) {
-        const rock = "rock";
-        const paper = "paper";
-        const scissors = "scissors";
-        if (humanSelection === computerSelection) {
-            console.log("Draw!!!");
-        } else {
-            switch (humanSelection) {
-                case rock:
-                    if (computerSelection === paper) {
-                        console.log(`You Lose! ${paper} beats ${rock}`);
-                        computerScore++;
-                    } else {
-                        console.log(`You Win! ${rock} beats ${scissors}`);
-                        humanScore++;
-                    }
-                    break;
-                case paper:
-                    if (computerSelection === scissors) {
-                        console.log(`You Lose! ${scissors} beats ${paper}`);
-                        computerScore++;
-                    } else {
-                        console.log(`You Win! ${paper} beats ${rock}`);
-                        humanScore++;
-                    }
-                    break;
-                case scissors:
-                    if (computerSelection === rock) {
-                        console.log(`You Lose! ${rock} beats ${scissors}`);
-                        computerScore++;
-                    } else {
-                        console.log(`You Win! ${scissors} beats ${paper}`);
-                        humanScore++;
-                    }
-                default:
-                    break;
-            }
+        console.log(playerChoiceImgDiv)
+        if(playerChoiceImgDiv.firstElementChild !== null) {
+            playerChoiceImgDiv.removeChild(playerChoiceImgDiv.firstElementChild);
+            computerChoiceImgDiv.removeChild(computerChoiceImgDiv.firstElementChild);
         }
-    }
-}
 
-playGame();
+        playerChoiceImgDiv.appendChild(playerChoiceImg);
+        computerChoiceImgDiv.appendChild(computerChoiceImg);
+
+        console.log(playerChoiceImg)
+
+        console.log(computerChoice);
+        console.log(playerChoice);
+    }

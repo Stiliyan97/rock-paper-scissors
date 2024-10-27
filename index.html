@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
     <link rel="stylesheet" href="./style.css">
     <title>Rock-Paper-Scissors</title>
 </head>
@@ -15,8 +15,8 @@
             <h2>Select Your Move</h2>
             <div class="selections">
                 <button class="selections-btn" id="rock"><img src="./images/rock.png" alt="rock icon"></button>
-                <button class="selections-btn"><img src="./images/paper.png" alt="paper icon"></button>
-                <button class="selections-btn"><img src="./images/scissors.png" alt="scissors icon"></button>
+                <button class="selections-btn" id="paper"><img src="./images/paper.png" alt="paper icon"></button>
+                <button class="selections-btn" id="scissors"><img src="./images/scissors.png" alt="scissors icon"></button>
             </div>
         </div>
         <div class="result">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="current-move">
                     <h2>Player</h2>
-                    <div class="current-move-icon"></div>
+                    <div class="current-move-icon" id="player-move"></div>
                 </div>
             </div>
             <div id="computer">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="current-move">
                     <h2>Computer</h2>
-                    <div class="current-move-icon"></div>
+                    <div class="current-move-icon" id="computer-move"></div>
                 </div>
                 
             </div>
